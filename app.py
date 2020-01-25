@@ -1,4 +1,6 @@
 #import modules
+import os
+
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
@@ -15,7 +17,7 @@ app = Flask(__name__)
 
 #tell SQL Alchemy that our database lives in the root folder at data.db
 #can use oracle or mysql and you can define them below. doesn't need to be sqlite
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
 #SQL ALCHEMY SET TO NOT TRACK MODIFICATIONS AS THIS USES UP PROCESSING
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'jose'
