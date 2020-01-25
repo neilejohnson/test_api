@@ -27,9 +27,6 @@ api = Api(app)
 #this will create a new endpoint that is /auth
 jwt = JWT(app, authenticate, identity)
 
-items = []
-
-
 #add resource to api and point to an endpoint with string variable for the name.
 api.add_resource(Store, '/store/<string:name>')
 api.add_resource(Item, '/item/<string:name>')
